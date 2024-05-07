@@ -31,7 +31,3 @@
     background-color: blue;
     height: 100%;
 }
-
-.element:nth-child(2){
-    height: 50%;
-}
