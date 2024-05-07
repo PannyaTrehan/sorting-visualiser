@@ -8,6 +8,8 @@ startBtn.addEventListener("click", function() {
     console.log(nums);
 });
 
+changeBarHeights();
+
 function mergeSort(arr, l, r) {
     if (l === r) {
         return arr;
@@ -53,3 +55,11 @@ function merge(arr, L, M, R) {
         k++;
     }
 };
+
+function changeBarHeights() {
+    elements.forEach(element => {
+        //change the number '10' to something else, based on your range of values
+        percentage = (nums[parseInt(element.id)]/10)*100;
+        element.style.height = `${percentage}%`;
+    })
+}
