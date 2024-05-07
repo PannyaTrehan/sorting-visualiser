@@ -5,6 +5,7 @@ let nums = [3, 1, 4, 10, 5, 6, 7];
 
 startBtn.addEventListener("click", function() {
     mergeSort(nums, 0, nums.length-1);
+    console.log(nums);
 });
 
 function mergeSort(arr, l, r) {
@@ -22,7 +23,7 @@ function mergeSort(arr, l, r) {
 
 function merge(arr, L, M, R) {
     left = arr.slice(L, M+1);
-    right = array.slice(M+1, R+1);
+    right = arr.slice(M+1, R+1);
 
     i = L;
     j = 0;
@@ -49,6 +50,6 @@ function merge(arr, L, M, R) {
     while(k < right.length) {
         nums[i] = right[k];
         i++;
-        j++;
+        k++;
     }
 };
