@@ -3,7 +3,18 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 
+.headings{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 h1{
+    color: white;
+}
+
+h2 {
+    padding-left: 2.5%;
     color: white;
 }
 
@@ -19,7 +30,7 @@ h1{
 .element{
     margin-right: 2px;
     width: 100%;
-    background-color: blue;
+    background-color: white;
     height: 100%;
 }
 

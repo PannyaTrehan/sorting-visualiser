@@ -1,96 +1,138 @@
 const elements = document.querySelectorAll(".element");
+const comparasions = document.querySelector("#comparasions");
+const delay = document.querySelector("#delay");
 var startBtn = document.querySelector("#startBtn");
 
 let nums = [];
-var delayInMilliseconds = 1000; //1 second
+let _numComparasions = 0;
+var delayInSeconds = 0.05;
+let numElements = 100;
 
-for (let i = 0; i < 50; i++) {
-    let randomNumber = Math.floor(Math.random() * 100) + 1;
-    nums.push(randomNumber);
+for (let i = 0; i < numElements; i++) {
+    // let randomNumber = Math.floor(Math.random() * 100) + 1;
+    nums.push(i+1);
 }
 
-startBtn.addEventListener("click", function() {
-    console.log(nums);
-    mergeSort(nums, 0, nums.length - 1);
-    changeBarHeights();
-    changeBarColours();
-});
-
+nums = shuffleArray(nums);
+numComparasions = 0;
+delay.textContent = `Delay: ${delayInSeconds} seconds`;
 changeBarColours();
 changeBarHeights();
 
-//goals:
-    //first try to slow the algorithm down as much as possible as you cannot visualise it without that
-        //keep  a variable to keep track of how slow you are making it (e.g. s = 1000;)
-    //get the left and right pointers showing
-    //get the index pointre showing
-    //have a seperate function for when the actual merging is happening (when merging from left to right)
+startBtn.addEventListener("click", async function() {
+    numComparasions = 0;
+    await mergeSort(nums, 0, nums.length - 1);
+    await finalVisualise();
+    await sleep(0.1);
+    await changeBarColours();
+});
 
-function mergeSort(arr, l, r) {
-    changeBarColours();
-    sleep(1000);
-    selectBarRed(l);
-    selectBarRed(r);
-    console.log("pointers - " + l + " " + r + " " + (l < r));
-    
-    //active the red colour for the left and right index
-    //this will not change until the next left and right indexes are chosen
-    //perhaps just keep track of the left and right indexes always as there will always be two that are selected
-
-    if (l >= r) {
-        //active the colour green on the left (which is the same as the right) index
-        //when this index changes is when you will remove its colour. Nothing based on time.
-        console.log("green - " + l + " " + r);
+Object.defineProperty(window, 'numComparasions', {
+    get() {
+        return _numComparasions;
+    },
+    set(value) {
+        _numComparasions = value;
+        comparasions.textContent = `Comparisons: ${value}`;
     }
+});
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+async function mergeSort(arr, l, r) {
+    changeBarColours();
     
     if (l < r) {
         var m = Math.floor((l + r) / 2);
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
+        await mergeSort(arr, l, m);
+        await mergeSort(arr, m + 1, r);
+        await merge(arr, l, m, r);
     }
 
     return arr;
 }
 
-function merge(arr, L, M, R) {
-    console.log("merge - " + L + "-" + M + "-" + R);
+async function merge(arr, L, M, R) {
+    selectBarGreen(L);
+    selectBarGreen(R);
     var left = arr.slice(L, M + 1);
     var right = arr.slice(M + 1, R + 1);
 
-    var i = L;
+    var temp = []; //temp store
+
+    var i = 0;
     var j = 0;
-    var k = 0;
 
-    while (j < left.length && k < right.length) {
-        if (left[j] <= right[k]) {
-            arr[i] = left[j];
-            j++;
+    //goal -- keep track of index
+    while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+            selectBarRed(L + i);
+            temp.push(left[i]);
+            i++;
         } else {
-            arr[i] = right[k];
-            k++;
+            selectBarRed(M+1 + j);
+            temp.push(right[j]);
+            j++;
         }
-        i++;
+        numComparasions++;
+        await sleep(delayInSeconds);
+        changeBarColours();
+        selectBarGreen(L);
+        selectBarGreen(R);
     }
 
-    while (j < left.length) {
-        arr[i] = left[j];
+    while (i < left.length) {
+        selectBarRed(L + i);
+        temp.push(left[i]);
+        i++;
+        await sleep(delayInSeconds);
+        changeBarColours();
+        selectBarGreen(L);
+        selectBarGreen(R);
+    }
+
+    while (j < right.length) {
+        selectBarRed(M + 1 + j);
+        temp.push(right[j]);
         j++;
-        i++;
+        await sleep(delayInSeconds);
+        changeBarColours();
+        selectBarGreen(L);
+        selectBarGreen(R);
     }
 
-    while (k < right.length) {
-        arr[i] = right[k];
-        k++;
-        i++;
+    changeBarColours();
+    selectBarGreen(L);
+    selectBarGreen(R);
+
+    for (let k = 0; k < temp.length; k++) {
+        selectBarGreen(L);
+        selectBarGreen(R);
+        selectBarRed(L+k);
+        arr[L + k] = temp[k];
+        changeBarHeights();
+        await sleep(delayInSeconds);
+        changeBarColours();
     }
-    changeBarHeights();
+
+    changeBarColours();
 }
 
-//gets called once at the beginning
+async function finalVisualise() {
+    for (let i = 0; i < numElements; i++) {
+        selectBarGreen(i);
+        await sleep(delayInSeconds/3);
+    }
+}
+
 function changeBarHeights() {
     elements.forEach(element => {
-        //change the number '10' to something else, based on your range of values
         percentage = (nums[parseInt(element.id)]/100)*100;
         element.style.height = `${percentage}%`;
     })
@@ -98,34 +140,20 @@ function changeBarHeights() {
 
 function changeBarColours() {
     elements.forEach(element => {
-        element.style.backgroundColor = "blue";
+        element.style.backgroundColor = "white";
     })
 }
 
-//to select a bar as red
 function selectBarRed(index) {
-    setTimeout(() => { // Introduce a delay before changing the color
-        console.log("selected - " + index);
-        elements[index].style.backgroundColor = "red";
-    }, delayInMilliseconds);
+    elements[index].style.backgroundColor = "red";
 }
 
 
-//to select a bar as green
 function selectBarGreen(index) {
-    elements[index].style.backgroundColor = "green";
+    elements[index].style.backgroundColor = "#42f554";
 }
 
-//blue is the default colour
-function unselectBar(index) {
-    elements[index].style.backgroundColor = "blue";
+async function sleep(seconds) {
+    return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 }
-
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
   
