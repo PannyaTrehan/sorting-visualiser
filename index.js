@@ -1,4 +1,5 @@
 const elements = document.querySelectorAll(".element");
+const arraySize = document.querySelector("#numElements");
 const comparasions = document.querySelector("#comparasions");
 const delay = document.querySelector("#delay");
 var startBtn = document.querySelector("#startBtn");
@@ -7,6 +8,7 @@ let nums = [];
 let _numComparasions = 0;
 var delayInSeconds = 0.05;
 let numElements = 100;
+arraySize.textContent = `Size: ${numElements}`;
 
 for (let i = 0; i < numElements; i++) {
     // let randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -60,6 +62,7 @@ async function mergeSort(arr, l, r) {
 
 async function merge(arr, L, M, R) {
     selectBarGreen(L);
+    selectBarBlue(M);
     selectBarGreen(R);
     var left = arr.slice(L, M + 1);
     var right = arr.slice(M + 1, R + 1);
@@ -84,6 +87,7 @@ async function merge(arr, L, M, R) {
         await sleep(delayInSeconds);
         changeBarColours();
         selectBarGreen(L);
+        selectBarBlue(M);
         selectBarGreen(R);
     }
 
@@ -94,6 +98,7 @@ async function merge(arr, L, M, R) {
         await sleep(delayInSeconds);
         changeBarColours();
         selectBarGreen(L);
+        selectBarBlue(M);
         selectBarGreen(R);
     }
 
@@ -104,13 +109,16 @@ async function merge(arr, L, M, R) {
         await sleep(delayInSeconds);
         changeBarColours();
         selectBarGreen(L);
+        selectBarBlue(M);
         selectBarGreen(R);
     }
 
     changeBarColours();
     selectBarGreen(L);
+    selectBarBlue(M);
     selectBarGreen(R);
 
+    //no sound here
     for (let k = 0; k < temp.length; k++) {
         selectBarGreen(L);
         selectBarGreen(R);
@@ -148,12 +156,15 @@ function selectBarRed(index) {
     elements[index].style.backgroundColor = "red";
 }
 
+function selectBarBlue(index) {
+    elements[index].style.backgroundColor = "#03f0fc";
+}
 
 function selectBarGreen(index) {
     elements[index].style.backgroundColor = "#42f554";
 }
 
+
 async function sleep(seconds) {
     return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 }
-  
