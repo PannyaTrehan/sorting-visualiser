@@ -3,14 +3,66 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 
+#visualiserContainer{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
 .headings{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 h1{
     color: white;
+}
+
+.seconds-text{
+    padding-left: 0;
+}
+
+.delayInputContainer{
+    display: flex;
+    flex-direction: row;
+    padding-left: 2.5%;
+}
+
+#delayAmount {
+    color: white;
+    background-color: rgb(41, 40, 40);
+    text-align: center;
+    padding: 0;
+    width: 17%;
+    border: none;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    font-family: inherit;
+    cursor: text;
+    margin-left: 4%;
+    margin-right: 4%;
+    border: 2.5px solid white;
+}
+
+input[type=number]:focus {
+    outline: none;
+}
+
+input::placeholder{
+    color: white;
+    text-decoration: underline;
 }
 
 h2 {
@@ -34,7 +86,7 @@ h2 {
     height: 100%;
 }
 
-#startBtn{
+#startBtn, #randomiseBtn{
     margin-top: 1%;
     padding: .1%;
     color: rgb(41, 40, 40);
@@ -44,4 +96,16 @@ h2 {
     font-size: 100%;
     padding: .3%;
     cursor: pointer;
+    font-family: inherit;
+    margin-right: .3vw;
+    margin-left: .3vw;
+}
+
+#menuBtn{
+    cursor: pointer;
+}
+
+.visualisationBtns{
+    display: flex;
+    justify-content: center;
 }
