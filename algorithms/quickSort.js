@@ -2,21 +2,9 @@ import { changeBarHeights } from "../helper/changeBarHeights.js";
 import { selectBar } from "../helper/selectBar.js";
 import { sleep } from "../helper/sleep.js";
 import { changeBarColours } from "../helper/changeBarColours.js";
-import { color } from "../index.js";
 import { delayInSeconds } from "../index.js";
 
-export async function quickSort(arr) {
-	let len = arr.length;
-
-	if (len < 2) {
-        return arr;
-    }
-
-	await merge(arr, 0, len-1)
-	return arr
-}
-
-async function merge(arr, start, end){
+export async function quickSort(arr, start, end) {
     changeBarColours();
 
 	if (start >= end) {
@@ -88,6 +76,8 @@ async function merge(arr, start, end){
     changeBarColours();
 
     //start and end variables values always stay the same
-	await merge(arr, start, right);
-	await merge(arr, left, end);
+	await quickSort(arr, start, right);
+	await quickSort(arr, left, end);
+
+	return arr;
 }
