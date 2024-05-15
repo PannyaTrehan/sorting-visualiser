@@ -32,7 +32,7 @@ changeBarHeights();
 startBtn.addEventListener("click", async function() {
     numComparasions = 0;
     // await mergeSort(nums, 0, nums.length - 1);
-    await quickSort(nums);
+    await quickSort(nums, 0, nums.length-1);
     await changeBarColours();
     await finalVisualise(numElements, delayInSeconds);
     await sleep(delay);
