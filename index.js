@@ -12,6 +12,7 @@ const comparasions = document.querySelector("#comparasions");
 const delay = document.querySelector("#delay");
 var startBtn = document.querySelector("#startBtn");
 var randomiseBtn = document.querySelector("#randomiseBtn");
+// const menuBtn = document.querySelector(".menu-btn");
 
 export const color = "white";
 export let nums = [];
@@ -53,3 +54,12 @@ Object.defineProperty(window, 'numComparasions', {
         comparasions.textContent = `Comparisons: ${value}`;
     }
 });
+
+function toggleSidebar() {
+    const sidebar = document.getElementById("mySidebar");
+    if (sidebar.style.width === "0px" || sidebar.style.width === "") {
+        sidebar.style.width = "17vw";
+    } else {
+        sidebar.style.width = "0";
+    }
+}

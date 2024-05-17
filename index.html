@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/2f603fef8e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css" >
 </head>
 <body>
+    <div id="mySidebar" class="sidebar">
+        <div class="collapseSidebar" onclick="toggleSidebar()">
+            <i class="fa-solid fa-caret-up"></i>
+        </div>
+        <a href="#">Merge Sort</a>
+        <a href="#">Quick Sort</a>
+        <a href="#">Insertion Sort</a>
+        <a href="#">Insertion Sort</a>
+        <a href="#">About</a>
+        <a href="#">Settings</a>
+      </div>
     <div id="visualiserContainer">
         <div class="headings">
-            <!-- <button id="menuBtn">
-                <i class="fas fa-bars"></i>
-            </button> -->
+            <div class="openbtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <h1>Merge Sort Visualiser</h1>
             <h2 id="numElements"></h2>
             <h2 id="comparasions">Comparisons: 0</h2>
@@ -31,5 +42,15 @@
         </div>
     </div>
     <script type="module" src="index.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            if (sidebar.style.width === "0px" || sidebar.style.width === "") {
+                sidebar.style.width = "17vw";
+            } else {
+                sidebar.style.width = "0";
+            }
+        }
+    </script>
 </body>
 </html>
