@@ -1,17 +1,14 @@
-import { sleep } from "./helper/sleep.js";
-import { changeBarHeights } from "./helper/changeBarHeights.js";
-import { changeBarColours } from "./helper/changeBarColours.js";
-import { finalVisualise } from "./helper/endAnimation.js";
-import { shuffleArray } from "./helper/shuffleArray.js";
-import { mergeSort } from "./algorithms/mergeSort.js";
-import { quickSort } from "./algorithms/quickSort.js";
+import { sleep, changeBarHeights, changeBarColours, finalVisualise, shuffleArray } from './helper/index.js';
+import { mergeSort, quickSort } from './algorithms/index.js';
 
-export const elements = document.querySelectorAll(".element");
-const arraySize = document.querySelector("#numElements");
-const comparasions = document.querySelector("#comparasions");
-const delay = document.querySelector("#delay");
-var startBtn = document.querySelector("#startBtn");
-var randomiseBtn = document.querySelector("#randomiseBtn");
+export const elements = document.querySelectorAll(".element") || [];
+const arraySize = document.querySelector("#numElements") || { value: 0};
+const comparasions = document.querySelector("#comparasions") || { value: 0};
+const delay = document.querySelector("#delay") || { value: 0 };
+var startBtn = document.querySelector("#startBtn") || { addEventListener: () => {} };;
+var randomiseBtn = document.querySelector("#randomiseBtn") || { addEventListener: () => {} };;
+
+var currentPage = null;
 
 export const color = "white";
 export let nums = [];
@@ -30,13 +27,25 @@ changeBarColours();
 changeBarHeights();
 
 startBtn.addEventListener("click", async function() {
-    numComparasions = 0;
-    // await mergeSort(nums, 0, nums.length - 1);
+  numComparasions = 0;
+
+  if (currentPage.includes('merge-sort.html')) {
+    await mergeSort(nums, 0, nums.length - 1);
+  } else if (currentPage.includes('quick-sort.html')) {
     await quickSort(nums, 0, nums.length-1);
-    await changeBarColours();
-    await finalVisualise(numElements, delayInSeconds);
-    await sleep(delay);
-    await changeBarColours(color);
+  } else if (currentPage.includes('insertion-sort.html')) {
+
+  } else if (currentPage.includes('heap-sort.html')) {
+
+  } else {
+    console.log("not a valid algorithm page");
+    return;
+  }
+
+  await changeBarColours();
+  await finalVisualise(numElements, delayInSeconds);
+  await sleep(delay);
+  await changeBarColours(color);
 });
 
 randomiseBtn.addEventListener("click", function() {
@@ -55,6 +64,7 @@ Object.defineProperty(window, 'numComparasions', {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+    currentPage = window.location.pathname;
     const sidebar = document.getElementById('mySidebar');
     const openBtn = document.querySelector('.openbtn');
   
@@ -74,5 +84,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     openBtn.addEventListener('click', toggleSidebar);
     document.addEventListener('click', handleClickOutside);
-  });
+});
   
