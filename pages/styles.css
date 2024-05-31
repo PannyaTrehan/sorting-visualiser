@@ -106,9 +106,23 @@ h2 {
     justify-content: center;
 }
 
+.openbtn{
+    color: white;
+    cursor: pointer;
+}
+
+.seperator{
+    background-color: #fff;
+    padding: 1px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: .7vw;
+    margin-right: .7vw;
+}
+
 .sidebar {
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 17vw; /* Set the width of the sidebar */
+    width: 0; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1000; /* Stay on top */
     top: 0;

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2f603fef8e.js" crossorigin="anonymous"></script>
+    <title>Heap Sort</title>
+    <link rel="stylesheet" href="styles.css" >
+</head>
+<body>
+    <div id="mySidebar" class="sidebar">
+        <a href="index.html" id="homeBtn">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+        <div class="seperator"></div>
+        <a href="merge-sort.html">Merge Sort</a>
+        <a href="quick-sort.html">Quick Sort</a>
+        <a href="insertion-sort.html">Insertion Sort</a>
+        <a href="heap-sort.html">Heap sort</a>
+        <div class="seperator"></div>
+        <a href="about.html">About</a>
+        <a href="settings.html">Settings</a>
+    </div>
+    <div id="visualiserContainer">
+        <div class="headings">
+            <div class="openbtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <h1>Heap Sort Visualiser</h1>
+            <h2 id="numElements"></h2>
+            <h2 id="comparasions">Comparisons: 0</h2>
+            <h2 id="delay"></h2>
+        </div>
+        <div id="arrayContainer">
+            <script>
+                for (let i = 0; i < 100; i++) {
+                    document.write(`<div id="${i}" class="element"></div>\n`);
+                }
+            </script>
+        </div>
+        <div class="visualisationBtns">
+            <button id="startBtn">Start</button>
+            <button id="randomiseBtn">Randomise</button>
+        </div>
+    </div>
+    <script type="module" src="../index.js"></script>
+</body>
+</html>

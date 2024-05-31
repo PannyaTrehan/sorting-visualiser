@@ -12,7 +12,6 @@ const comparasions = document.querySelector("#comparasions");
 const delay = document.querySelector("#delay");
 var startBtn = document.querySelector("#startBtn");
 var randomiseBtn = document.querySelector("#randomiseBtn");
-// const menuBtn = document.querySelector(".menu-btn");
 
 export const color = "white";
 export let nums = [];
@@ -55,11 +54,25 @@ Object.defineProperty(window, 'numComparasions', {
     }
 });
 
-function toggleSidebar() {
-    const sidebar = document.getElementById("mySidebar");
-    if (sidebar.style.width === "0px" || sidebar.style.width === "") {
-        sidebar.style.width = "17vw";
-    } else {
-        sidebar.style.width = "0";
+document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.getElementById('mySidebar');
+    const openBtn = document.querySelector('.openbtn');
+  
+    function toggleSidebar() {
+      if (sidebar.style.width === '0px' || sidebar.style.width === '') {
+        sidebar.style.width = '20%';
+      } else {
+        sidebar.style.width = '0';
+      }
     }
-}
+  
+    function handleClickOutside(event) {
+      if (!sidebar.contains(event.target) && !openBtn.contains(event.target)) {
+        sidebar.style.width = '0';
+      }
+    }
+
+    openBtn.addEventListener('click', toggleSidebar);
+    document.addEventListener('click', handleClickOutside);
+  });
+  
