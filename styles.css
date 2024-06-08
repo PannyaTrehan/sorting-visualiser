@@ -159,3 +159,9 @@ h2 {
 .collapse-icon:hover {
     color: #f1f1f1;
 }
+
+.content{
+    margin-left: 2.5%;
+    width: 75%;
+    color: white;
+}
