@@ -8,7 +8,20 @@
     <link rel="stylesheet" href="styles.css" >
 </head>
 <body>
-    <div id="sidebarContainer"></div>
+    <div id="mySidebar" class="sidebar">
+        <a href="../index.html" id="homeBtn">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+        <div class="seperator"></div>
+        <a href="../pages/merge-sort.html">Merge Sort</a>
+        <a href="../pages/quick-sort.html">Quick Sort</a>
+        <a href="../pages/insertion-sort.html">Insertion Sort</a>
+        <a href="gnome-sort.html">Gnome sort</a>
+        <div class="seperator"></div>
+        <a href="../pages/about.html">About</a>
+        <a href="../pages/settings.html">Settings</a>
+    </div>
     <div id="visualiserContainer">
         <div class="headings">
             <div class="openbtn">
@@ -16,6 +29,19 @@
             </div>
             <h1>Home</h1>
         </div>
+    </div>
+    <div class="homepage-content">
+        <p>Welcome to the Sorting Algorithm Visualizer! This website allows you to explore and understand various sorting algorithms through interactive visualizations.</p>
+        <h2>Features</h2>
+        <ul>
+            <li>Visualize different sorting algorithms including Merge Sort, Quick Sort, Insertion Sort, and Gnome Sort.</li>
+            <li>Learn how each algorithm works with step-by-step explanations.</li>
+            <li>Compare the efficiency and performance of different algorithms.</li>
+        </ul>
+        <h2>How to Use</h2>
+        <p>Use the sidebar to navigate to different sorting algorithms. Each page provides a detailed explanation and visualization of the selected sorting algorithm.</p>
+        <h2>About</h2>
+        <p>Visit the About page to learn more about this project and the creator.</p>
     </div>
     <script type="module" src="./index.js"></script>
     <script src="./sidebar.js"></script>
