@@ -17,7 +17,7 @@
         <a href="merge-sort.html">Merge Sort</a>
         <a href="quick-sort.html">Quick Sort</a>
         <a href="insertion-sort.html">Insertion Sort</a>
-        <a href="heap-sort.html">Heap sort</a>
+        <a href="gnome-sort.html">Gnome sort</a>
         <div class="seperator"></div>
         <a href="about.html">About</a>
         <a href="settings.html">Settings</a>
@@ -34,7 +34,11 @@
         </div>
         <div id="arrayContainer">
             <script>
-                for (let i = 0; i < 100; i++) {
+                const size = localStorage.getItem('size');
+                const numElements = size !== null ? parseFloat(size) : 100;
+
+                console.log(numElements);
+                for (let i = 0; i < numElements; i++) {
                     document.write(`<div id="${i}" class="element"></div>\n`);
                 }
             </script>
