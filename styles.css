@@ -184,3 +184,65 @@ h2 {
     font-size: 1.3em;
     padding-left: 0 !important;
 }
+
+.homepage-content h2{
+    padding: 0;
+}
+
+.homepage-content ul{
+    padding: 20;
+}
+
+.openbtn {
+    cursor: pointer;
+    color: #f5f5f5;
+}
+.settings-container {
+    background-color: #3c3f41;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 20%;
+    margin: 0;
+}
+.settings-container form {
+    margin-bottom: 15px;
+}
+.settings label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.settings input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: #2b2b2b;
+}
+.settings button {
+    background-color: rgb(41, 40, 40);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 15%;
+}
+.settings button:hover {
+    background-color: rgb(53, 52, 52);
+}
+.settings {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#delayTimeForm, #sizeForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
