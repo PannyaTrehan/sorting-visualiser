@@ -1,6 +1,6 @@
 # Sorting Algorithms Visualization
 
-![Merge Sort Visualization](path/to/your/merge-sort.gif)
+![Merge Sort Visualization](./assets/merge-sort.mp4)
 
 ## Table of Contents
 - [Introduction](#introduction)
