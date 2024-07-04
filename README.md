@@ -1,6 +1,6 @@
 # Sorting Algorithms Visualization
 
-![Merge Sort Visualization](./assets/merge-sort.mov)
+![Merge Sort Visualization](https://youtu.be/XHZlvUX0gi0)
 
 ## Table of Contents
 - [Introduction](#introduction)
