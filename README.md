@@ -1,17 +1,13 @@
 # Sorting Algorithms Visualization
 
-![Merge Sort Visualization](https://youtu.be/XHZlvUX0gi0)
+# Sorting Algorithms Visualization
+[![Merge Sort Visualization](https://img.youtube.com/vi/XHZlvUX0gi0/0.jpg)](https://youtu.be/XHZlvUX0gi0)
 
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
 - [Demo](#demo)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Algorithms Visualized](#algorithms-visualized)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Introduction
 Sorting Algorithms Visualization is an interactive tool designed to demonstrate the functioning of various sorting algorithms. This project is aimed at helping users, especially students and educators, to understand and compare the performance of different sorting techniques through dynamic visual representations.
