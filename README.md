@@ -24,7 +24,7 @@ Sorting Algorithms Visualization is an interactive tool designed to demonstrate 
 - Educational resource for learning and teaching sorting algorithms.
 
 ## Demo
-Check out the live demo [here](https://pannyatrehan.github.io).
+Check out the live demo [here](https://sorting-visualiser-ekv9r4cpb-pannyatrehans-projects.vercel.app/).
 
 ## Installation
 To get a local copy up and running, follow these simple steps:
